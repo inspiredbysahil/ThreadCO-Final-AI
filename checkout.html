@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | ThreadCo - Wear the Code</title>
+  <meta name="description" content="Secure checkout for your ThreadCo streetwear order. Enter shipping address and choose Cash on Delivery or Online Payment." />
+  <meta property="og:title" content="Checkout | ThreadCo" />
+  <meta property="og:description" content="Complete your order for limited drops." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">ThreadCo</a></h1>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Product.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a id="cart" href="cart.html" class="tc-nav-cart">Cart (0)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="tc-checkout-container" class="tc-checkout-section">
+      <div class="tc-checkout-layout">
+        <!-- Left Column: Checkout Forms -->
+        <div class="tc-checkout-left">
+          <form id="tc-checkout-form" novalidate>
+            <!-- 1. Customer Contact Details -->
+            <section class="tc-checkout-card">
+              <h3>1. Contact Information</h3>
+              <div class="tc-form-grid">
+                <div class="tc-form-group tc-full-width">
+                  <label for="customer_name">Full Name *</label>
+                  <input type="text" id="customer_name" name="customer_name" placeholder="Arjun Sharma" required autocomplete="name">
+                  <span id="error_customer_name" class="tc-inline-error" style="display: none;"></span>
+                </div>
+                <div class="tc-form-group">
+                  <label for="customer_email">Email Address *</label>
+                  <input type="email" id="customer_email" name="customer_email" placeholder="arjun@example.com" required autocomplete="email">
+                  <span id="error_customer_email" class="tc-inline-error" style="display: none;"></span>
+                </div>
+                <div class="tc-form-group">
+                  <label for="customer_phone">Mobile Number *</label>
+                  <input type="tel" id="customer_phone" name="customer_phone" placeholder="9876543210" maxlength="10" required autocomplete="tel">
+                  <small>10-digit Indian mobile number</small>
+                  <span id="error_customer_phone" class="tc-inline-error" style="display: none;"></span>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2. Shipping Address -->
+            <section class="tc-checkout-card">
+              <h3>2. Shipping Address</h3>
+              <div class="tc-form-grid">
+                <div class="tc-form-group tc-full-width">
+                  <label for="address_house">Flat / House No. / Building *</label>
+                  <input type="text" id="address_house" name="address_house" placeholder="Apartment 4B, Street 12" required>
+                  <span id="error_address_house" class="tc-inline-error" style="display: none;"></span>
+                </div>
+                <div class="tc-form-group tc-full-width">
+                  <label for="address_street">Street / Area / Locality *</label>
+                  <input type="text" id="address_street" name="address_street" placeholder="Hauz Khas Village" required>
+                  <span id="error_address_street" class="tc-inline-error" style="display: none;"></span>
+                </div>
+                <div class="tc-form-group">
+                  <label for="address_city">City *</label>
+                  <input type="text" id="address_city" name="address_city" placeholder="New Delhi" required>
+                  <span id="error_address_city" class="tc-inline-error" style="display: none;"></span>
+                </div>
+                <div class="tc-form-group">
+                  <label for="address_state">State *</label>
+                  <select id="address_state" name="address_state" required>
+                    <option value="">--Select State--</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Other">Other / UT</option>
+                  </select>
+                  <span id="error_address_state" class="tc-inline-error" style="display: none;"></span>
+                </div>
+                <div class="tc-form-group">
+                  <label for="address_pincode">PIN Code *</label>
+                  <input type="text" id="address_pincode" name="address_pincode" placeholder="110016" maxlength="6" required>
+                  <small>6-digit Indian Postal Code</small>
+                  <span id="error_address_pincode" class="tc-inline-error" style="display: none;"></span>
+                </div>
+                <div class="tc-form-group">
+                  <label for="address_country">Country</label>
+                  <input type="text" id="address_country" value="India" readonly disabled>
+                </div>
+                <div class="tc-form-group tc-full-width">
+                  <label for="order_notes">Order Notes (Optional)</label>
+                  <textarea id="order_notes" name="order_notes" rows="2" placeholder="e.g. Leave with security, call before delivery..."></textarea>
+                </div>
+              </div>
+            </section>
+
+            <!-- 3. Payment Method -->
+            <section class="tc-checkout-card">
+              <h3>3. Payment Method</h3>
+              <div class="tc-demo-alert-banner">
+                <strong>ℹ️ Development Demo Mode:</strong> Orders are simulated locally. No real payments will be charged.
+              </div>
+
+              <div class="tc-payment-methods">
+                <label class="tc-payment-option">
+                  <input type="radio" name="payment_method" value="cod" checked>
+                  <div class="tc-payment-info">
+                    <strong>Cash on Delivery (COD)</strong>
+                    <small>Pay with cash or UPI on delivery to your doorstep. Available pan-India.</small>
+                  </div>
+                </label>
+
+                <label class="tc-payment-option">
+                  <input type="radio" name="payment_method" value="online">
+                  <div class="tc-payment-info">
+                    <strong>Online Payment (UPI, Cards, Netbanking)</strong>
+                    <small>Simulated gateway integration interface (Ready for Razorpay / Cashfree backend).</small>
+                  </div>
+                </label>
+              </div>
+
+              <div style="margin-top: 24px;">
+                <button type="submit" id="tc-place-order-btn" class="tc-btn tc-btn-primary" style="width: 100%; padding: 18px; font-size: 1rem;">
+                  Place Order &rarr;
+                </button>
+              </div>
+            </section>
+          </form>
+        </div>
+
+        <!-- Right Column: Order Summary -->
+        <div class="tc-checkout-right">
+          <div class="tc-order-summary-box">
+            <h3>Order Summary</h3>
+            <div id="tc-summary-items" class="tc-summary-items-list">
+              <!-- Dynamically populated -->
+            </div>
+
+            <div class="tc-summary-row">
+              <span>Subtotal</span>
+              <strong id="tc-summary-subtotal">₹0</strong>
+            </div>
+            <div class="tc-summary-row">
+              <span>Shipping</span>
+              <span id="tc-summary-shipping">₹0</span>
+            </div>
+            <div id="tc-summary-discount-row" class="tc-summary-row tc-summary-discount" style="display: none;">
+              <span>Discount</span>
+              <span id="tc-summary-discount">-₹0</span>
+            </div>
+            <div class="tc-summary-row tc-summary-total">
+              <span>Grand Total</span>
+              <strong id="tc-summary-total">₹0</strong>
+            </div>
+
+            <div class="tc-cart-coupon-wrap">
+              <label for="tc-coupon-input">Promo Code</label>
+              <div class="tc-coupon-input-group">
+                <input type="text" id="tc-coupon-input" placeholder="e.g. THREAD10">
+                <button type="button" id="tc-coupon-apply-btn" class="tc-btn">Apply</button>
+              </div>
+              <p id="tc-coupon-feedback" class="tc-coupon-feedback"></p>
+            </div>
+
+            <div class="tc-cart-badges">
+              <small>🔒 256-Bit SSL Encrypted Checkout</small>
+              <small>⚡ Guaranteed Dispatch in 48 Hours</small>
+              <small>📦 Free Returns Within 7 Days</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <p>&copy;2025 ThreadCo. All rights reserved.</p>
+    <p><em>Wear the Code. Live the Street.</em></p>
+
+    <nav aria-label="Footer Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Product.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="shipping.html">Shipping Policy</a></li>
+        <li><a href="returns.html">Returns & Refunds</a></li>
+      </ul>
+    </nav>
+    <div>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> | 
+      <a href="https://threads.net" target="_blank" rel="noopener noreferrer">Threads</a> | 
+      <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">Youtube</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

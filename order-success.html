@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed | ThreadCo - Wear the Code</title>
+  <meta name="description" content="Your ThreadCo streetwear order has been confirmed. Thank you for your purchase." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">ThreadCo</a></h1>
+    <nav aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Product.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a id="cart" href="cart.html" class="tc-nav-cart">Cart (0)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="tc-success-section">
+      <div id="tc-success-card" class="tc-success-card">
+        <!-- Rendered dynamically below or fallback -->
+        <div class="tc-success-badge-wrap">
+          <div class="tc-success-icon">✓</div>
+          <h2>Order Confirmed!</h2>
+          <p class="tc-success-subtext">Thank you for repping ThreadCo. Your drop is being packed at our Delhi HQ.</p>
+        </div>
+
+        <div class="tc-demo-alert-banner" style="margin-bottom: 24px;">
+          <strong>ℹ️ Demo Mode Simulation:</strong> This order was recorded in your browser session. A real backend would dispatch automated SMS and tracking email updates.
+        </div>
+
+        <div id="tc-order-details-render">
+          <!-- Dynamically populated from storage.getLastOrder() -->
+        </div>
+
+        <div class="tc-success-actions">
+          <a href="Product.html" class="tc-btn tc-btn-primary">Continue Shopping</a>
+          <button type="button" class="tc-btn tc-btn-secondary" onclick="window.print()">Print Order Receipt</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <p>&copy;2025 ThreadCo. All rights reserved.</p>
+    <p><em>Wear the Code. Live the Street.</em></p>
+
+    <nav aria-label="Footer Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Product.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="shipping.html">Shipping Policy</a></li>
+        <li><a href="returns.html">Returns & Refunds</a></li>
+      </ul>
+    </nav>
+    <div>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> | 
+      <a href="https://threads.net" target="_blank" rel="noopener noreferrer">Threads</a> | 
+      <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">Youtube</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const detailsContainer = document.getElementById('tc-order-details-render');
+      if (!detailsContainer) return;
+
+      const order = window.ThreadCo.getLastOrder ? window.ThreadCo.getLastOrder() : null;
+      const formatPrice = window.ThreadCo.formatPrice || ((n) => '₹' + n);
+
+      if (!order) {
+        detailsContainer.innerHTML = `
+          <p style="text-align: center; color: var(--color-text-muted);">
+            No recent order found in session. <a href="Product.html" style="color: var(--color-accent);">Shop current drops &rarr;</a>
+          </p>
+        `;
+        return;
+      }
+
+      const orderDate = new Date(order.date).toLocaleDateString('en-IN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      const itemsHtml = (order.items || []).map((it) => `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--color-border);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="${it.image}" alt="${it.name}" style="width: 50px; height: 60px; object-fit: cover; border-radius: 4px;">
+            <div>
+              <strong>${it.name}</strong>
+              <small style="display: block; color: var(--color-text-muted);">${it.size ? 'Size: ' + it.size : ''} &bull; Qty: ${it.quantity}</small>
+            </div>
+          </div>
+          <strong>${formatPrice(it.lineTotal)}</strong>
+        </div>
+      `).join('');
+
+      detailsContainer.innerHTML = `
+        <div class="tc-receipt-grid">
+          <div class="tc-receipt-group">
+            <span>Order Number</span>
+            <strong>${order.orderId}</strong>
+          </div>
+          <div class="tc-receipt-group">
+            <span>Order Date</span>
+            <strong>${orderDate}</strong>
+          </div>
+          <div class="tc-receipt-group">
+            <span>Customer</span>
+            <strong>${order.customer.name}</strong>
+            <small style="color: var(--color-text-muted);">${order.customer.email} | +91 ${order.customer.phone}</small>
+          </div>
+          <div class="tc-receipt-group">
+            <span>Payment Method</span>
+            <strong>${order.paymentMethod}</strong>
+            <small style="color: #10b981;">${order.paymentStatus}</small>
+          </div>
+          <div class="tc-receipt-group" style="grid-column: 1 / -1;">
+            <span>Shipping Address</span>
+            <strong>${order.shippingAddress.house}, ${order.shippingAddress.street}</strong>
+            <small style="color: var(--color-text-muted);">${order.shippingAddress.city}, ${order.shippingAddress.state} - ${order.shippingAddress.pincode}, ${order.shippingAddress.country}</small>
+          </div>
+          <div class="tc-receipt-group" style="grid-column: 1 / -1;">
+            <span>Delivery Promise</span>
+            <strong>Ships in 48 Hours &bull; Estimated Arrival: ${order.estimatedDelivery}</strong>
+          </div>
+        </div>
+
+        <h3 style="margin: 24px 0 12px; font-size: 1.1rem; text-transform: uppercase;">Items in this Drop</h3>
+        <div style="margin-bottom: 24px;">
+          ${itemsHtml}
+        </div>
+
+        <div style="background: var(--color-surface); padding: 20px; border-radius: 6px; border: 1px solid var(--color-border); margin-bottom: 24px;">
+          <div class="tc-summary-row" style="margin-bottom: 8px;">
+            <span>Subtotal</span>
+            <strong>${formatPrice(order.totals.subtotal)}</strong>
+          </div>
+          <div class="tc-summary-row" style="margin-bottom: 8px;">
+            <span>Shipping</span>
+            <span>${order.totals.shipping === 0 ? '<strong class="tc-free-tag">FREE</strong>' : formatPrice(order.totals.shipping)}</span>
+          </div>
+          ${order.totals.discount > 0 ? `
+            <div class="tc-summary-row tc-summary-discount" style="margin-bottom: 8px;">
+              <span>Discount</span>
+              <span>-${formatPrice(order.totals.discount)}</span>
+            </div>
+          ` : ''}
+          <div class="tc-summary-row tc-summary-total" style="padding-top: 12px; border-top: 1px solid var(--color-border);">
+            <span>Grand Total</span>
+            <strong style="color: var(--color-primary); font-size: 1.3rem;">${formatPrice(order.totals.grandTotal)}</strong>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

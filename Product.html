@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreadCo - The Catalogue</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">ThreadCo</a></h1>
+        <!-- <p><em>Wear the Code. Live the Street.</em></p> -->
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Product.html">Products</a></li>
+                <li><a href="Product detail.html">Product Detail</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a id="cart" href="cart.html" class="tc-nav-cart">Cart (0)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="catalogue">
+            <h2>The Catalogue</h2>
+            <p>Fresh drops, every Friday. <strong>Limited stock. No restocks.</strong> Ever.</p>
+            <p>Showing <strong>8 products</strong></p>
+        </section>
+
+        <div id="product-layout">
+            <section id="sidebar">
+                <h3>Filter By</h3>
+                <hr>
+                <h4>Category</h4>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="tshirt">
+                        <label for="tshirt">T-Shirts</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="hoodies">
+                        <label for="hoodies">Hoodies</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="Cargo Pants">
+                        <label for="Cargo Pants">Cargo Pants</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="caps">
+                        <label for="caps">Caps</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="Accessories">
+                        <label for="Accessories">Accessories</label>
+                    </li>
+
+                </ul>
+
+                <h4>Price Range (&#8377;)</h4>
+
+                <label for="Minimum">Min :</label>
+                <input type="number" id="Minimum" placeholder="0" min="0">
+                <br><br>
+                <label for="Maximum">Max :</label>
+                <input type="number" id="Maximum" placeholder="5000" max="5000">
+
+                <h4>Sort By</h4>
+
+
+                <select name="Sort By" id="sort By">
+                    <option value="Most Popular">Most Popular</option>
+                    <option value="Price : Low to High">Price : Low to High</option>
+                    <option value="Price : High to Low">Price : High to Low</option>
+                    <option value="Newest First">Newest First</option>
+                </select>
+                <br><br>
+                <button type="button">Apply Filters</button>
+                <button type="reset">Clear All</button>
+
+
+            </section>
+
+            <section id="main-product">
+                <h2>All Products</h2>
+
+                <div id="grid">
+
+                    <article>
+
+                        <figure>
+                            <img src="product 1.jpg" alt="">
+                            <figcaption>Oversized Drop Tee Vol.3</figcaption>
+                        </figure>
+
+                        <h3>Oversized Drop Tee Vol.3</h3>
+
+                        <p>Category: <span> T-Shirts</span> </p>
+
+                        <p>Pirce :<strong> &#8377; 799</strong> <s>&#8377;1199</s></p>
+
+                        <p> <mark>33% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+
+                    <article>
+
+                        <figure>
+                            <img src="product 2.jpg" alt="">
+                            <figcaption>Street Hoodie - Olive</figcaption>
+                        </figure>
+
+                        <h3>Street Hoodie - Olive</h3>
+
+                        <p>Category: <span>Hoodies</span> </p>
+
+                        <p>Price : &#8377;<strong>1499</strong> <s>&#8377;1999</s></p>
+
+                        <p> <mark>25% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+
+                    <article>
+
+                        <figure>
+                            <img src="product 3.jpg" alt="">
+                            <figcaption>Utility Cargo - Beige</figcaption>
+                        </figure>
+
+                        <h3>Utility Cargo - Beige</h3>
+
+                        <p>Category: <span>Cargo Pants</span> </p>
+
+                        <p>Price : &#8377;<strong>1799</strong> <s>&#8377;2499</s></p>
+
+                        <p> <mark>28% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+
+                    <article>
+
+                        <figure>
+                            <img src="product 4.jpg" alt="">
+                            <figcaption>TC 6-Panel Cape</figcaption>
+                        </figure>
+
+                        <h3>TC 6-Panel Cap</h3>
+
+                        <p>Category: <span>Caps</span> </p>
+
+                        <p>Price : &#8377;<strong>499</strong> <s>&#8377;699</s></p>
+
+                        <p> <mark>28% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+
+                    <article>
+
+                        <figure>
+                            <img src="product 1.jpg" alt="">
+                            <figcaption>Oversized Drop Tee Vol.3</figcaption>
+                        </figure>
+
+                        <h3>Oversized Drop Tee Vol.3</h3>
+
+                        <p>Category: <span>T-Shirts</span></p>
+
+                        <p>Pirce : &#8377;<strong>799</strong> <s>&#8377;1199</s></p>
+
+                        <p> <mark>33% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+
+                    <article>
+
+                        <figure>
+                            <img src="product 2.jpg" alt="">
+                            <figcaption>Street Hoodie - Olive</figcaption>
+                        </figure>
+
+                        <h3>Street Hoodie - Olive</h3>
+
+                        <p>Category: <span>Hoodies</span></p>
+
+                        <p>Price : &#8377;<strong>1499</strong> <s>&#8377;1999</s></p>
+
+                        <p> <mark>25% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+
+                    <article>
+
+                        <figure>
+                            <img src="product 3.jpg" alt="">
+                            <figcaption>Utility Cargo - Beige</figcaption>
+                        </figure>
+
+                        <h3>Utility Cargo - Beige</h3>
+
+                        <p>Category: <span>Cargo Pants</span></p>
+
+                        <p>Price : &#8377;<strong>1799</strong> <s>&#8377;2499</s></p>
+
+                        <p> <mark>28% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+
+                    <article>
+
+                        <figure>
+                            <img src="product 4.jpg" alt="">
+                            <figcaption>TC 6-Panel Cape</figcaption>
+                        </figure>
+
+                        <h3>TC 6-Panel Cap</h3>
+
+                        <p>Category: <span>Caps</span></p>
+
+                        <p>Price : &#8377;<strong>499</strong> <s>&#8377;699</s></p>
+
+                        <p> <mark>28% OFF</mark> </p>
+                        <a href="">View Detail</a>
+                        <button type="submit">Add to Cart</button>
+
+
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <section class="bestsellers">
+            <h2>Compare Our Bestsellers</h2>
+            <!-- <p>Not sure which to pick? Here is a side-by-side breakdown.</p> -->
+
+            <div id="product-table" >
+                <table>
+                    <tr>
+                        <th colspan="4">Product Comparison - Top 3 Picks</th>
+                    </tr>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Drop Tee Vol.3</th>
+                        <th>Street Hoodie</th>
+                        <th>Utility Cargo</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">Pricing</th>
+                        <td>&#8377; 799</td>
+                        <td>&#8377; 1499</td>
+                        <td>&#8377; 1799</td>
+                    </tr>
+                    <tr>
+                        <td><s>&#8377; 1199</s></td>
+                        <td><s>&#8377; 1999</s></td>
+                        <td><s>&#8377; 2499</s></td>
+                    </tr>
+                    <tr>
+                        <th>Material</th>
+                        <td>100% Cotton</td>
+                        <td>80% Cotton, 20% Polyester</td>
+                        <td>100% Cotton Twill</td>
+                    </tr>
+
+                    <tr>
+                        <th>Available Sizes</th>
+                        <td>S, M, L, XL, XXL</td>
+                        <td>S, M, L, XL</td>
+                        <td>28, 30, 32, 34, 36</td>
+                    </tr>
+                    <tr>
+                        <th>Rating</th>
+                        <td>&#9733;&#9733;&#9733;&#9733;&#9733;(4.6)</td>
+                        <td>&#9733;&#9733;&#9733;&#9733;&#9734;(4.9)</td>
+                        <td>&#9733;&#9733;&#9733;&#9733;&#9734;(4.7)</td>
+                    </tr>
+                    <tr>
+                        <th>Free Delivery</th>
+                        <td>Yes (above &#8377; 499)</td>
+                        <td>Yes (above &#8377; 499)</td>
+                        <td>Yes (above &#8377; 499)</td>
+                    </tr>
+                    <tr>
+                        <th>Best For</th>
+                        <td>Everyday wear</td>
+                        <td>Winter & layering</td>
+                        <td>Street & utility style</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <p>&copy;2025 ThreadCo. All rights reserved.</p>
+        <p><em>Wear the Code. Live the Street.</em></p>
+
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Product.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="shipping.html">Shipping Policy</a></li>
+                <li><a href="returns.html">Returns & Refunds</a></li>
+            </ul>
+        </nav>
+        <div>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a> | 
+            <a href="https://threads.net" target="_blank" rel="noopener noreferrer">Threads</a> | 
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">Youtube</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
